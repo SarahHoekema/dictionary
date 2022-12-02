@@ -245,6 +245,9 @@ public class DictionaryClient {
     //create copy of the entry corresponding to the member number 
     DictionaryEntry entry = memberDictionary.fetchNode(memberNumber);
 
+    //remove node with entry from tree
+    memberDictionary.remove(memberNumber);
+
     confirmation = "";
     
     do{
@@ -333,9 +336,8 @@ public class DictionaryClient {
       }
     } while(!confirmation.equals("y")); //if user response is no, re-prompt for member data
 
-    //remove old entry from tree then add the new entry
+    //add modified entry to tree as previous entry was removed
     //this is done in case the member number is changed the tree would be unsorted
-    memberDictionary.remove(entry.getMemberNumber());
     memberDictionary.add(entry);
 
     return memberDictionary;
